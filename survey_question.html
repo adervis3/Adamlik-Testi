@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://use.fontawesome.com/c31de18260.js"></script>
+<script>
+$(document).ready(function(){
+    $('#Option_A_Revert').hide();
+    $('#Option_B_Revert').hide();
+    $('#Option_C_Revert').hide();
+    $('#Option_D_Revert').hide();
+    var click_count=0,a_click=0,b_click=0,c_click=0,d_click=0;
+    var aria_value=0;
+
+    $('button').click(function(){
+      var button_id=$(this).attr('id');
+      alert(button_id);
+
+      switch (button_id)
+      {
+        case 'Option_A_Revert':
+          a_click--;
+          aria_value=$('Answer_A').find(".progress-bar").attr("aria-valuenow");
+          $('Answer_A').find(".progress-bar").attr("aria-valuenow",(aria_value-50));
+          $('Answer_A').find(".progress-bar").attr("style","width:"+(aria_value-50)+"%");
+          click_count--;
+          if(a_click==0)
+            $(this).hide();
+
+          break;
+        case 'Option_B_Revert':
+          b_click--;
+          aria_value=$('Answer_B').find(".progress-bar").attr("aria-valuenow");
+          $('Answer_B').find(".progress-bar").attr("aria-valuenow",(aria_value-50));
+          $('Answer_B').find(".progress-bar").attr("style","width:"+(aria_value-50)+"%");
+          click_count--;
+          if(b_click==0)
+            $(this).hide();
+          break;
+        case 'Answer_C':
+          c_click--;
+          aria_value=$('Answer_C').find(".progress-bar").attr("aria-valuenow");
+          $('Answer_C').find(".progress-bar").attr("aria-valuenow",(aria_value-50));
+          $('Answer_C').find(".progress-bar").attr("style","width:"+(aria_value-50)+"%");
+          click_count--;
+          if(c_click==0)
+            $(this).hide();
+          break;
+        case 'Answer_D':
+          d_click--;
+          aria_value=$('Answer_D').find(".progress-bar").attr("aria-valuenow");
+          $('Answer_D').find(".progress-bar").attr("aria-valuenow",(aria_value-50));
+          $('Answer_D').find(".progress-bar").attr("style","width:"+(aria_value-50)+"%");
+          click_count--;
+          if(d_click==0)
+            $(this).hide();
+          break;
+        default:
+          break;
+        }
+    });
+    $("a").click(function(){
+      var button_id=$(this).attr('id');
+      if(click_count<2)
+      {
+        switch ($(this).attr('id'))
+        {
+          case 'Answer_A':
+            a_click++;
+            $('#Option_A_Revert').show();
+            break;
+          case 'Answer_B':
+            b_click++;
+            $('#Option_B_Revert').show();
+            break;
+          case 'Answer_C':
+            c_click++;
+            $('#Option_C_Revert').show();
+            break;
+          case 'Answer_D':
+            d_click++;
+            $('#Option_D_Revert').show();
+            break;
+          default:
+            break;
+        }
+        alert($(this).find(".progress-bar").attr("aria-valuenow"));
+        aria_value=parseInt($(this).find(".progress-bar").attr("aria-valuenow"));
+        alert("arial_value: "+aria_value);
+        $(this).find(".progress-bar").attr("aria-valuenow",(aria_value+50));
+        $(this).find(".progress-bar").attr("style","width:"+(aria_value+50)+"%");
+        click_count++;
+      }
+
+    });
+});
+</script>
+</head>
+<body>
+
+<div class="container">
+  <h2 class="text-center">Ford Otosan ~ Adamlık Testi</h2>
+
+  <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="container">
+          <div class="col-xs-1">
+            <h3><span id="SurveyForm_QuestionNumber"class="label label-success">Soru #4</span></h3>
+          </div>
+          <div class="col-xs-10">
+            <h3 id="SurveyForm_QuestionText">
+              Soru bu olacak işte kanka id si SurveyForm_QuestionText. Blah Blah Blah Blah Blah BlahBlah Blah BlahBlah Blah Blah Blah Blah Blah Blah Blah Blah Blah?
+            </h3>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="panel-body">
+        <!--question options begin-->
+        <div class="well well-sm" >
+          <div class="container">
+            <div class="col-sm-10">
+              <a id="Answer_A" href="#" style="text-decoration:none">
+                <h4 id="Question_Option_A_Text">
+                  A Şıkkına ait cevap, blabla bla bla bla bla lorem ipsum filan.
+                <h4>
+
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                  </div>
+                </div>
+              </a>
+            </div>
+
+              <div class="col-sm-2">
+                  <button id="Option_A_Revert" type="button" class="btn btn-warning"><span><i class="fa fa-reply" aria-hidden="true"></i></span>  Geri Al</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="well well-sm" >
+            <div class="container">
+              <div class="col-sm-10">
+                <a id="Answer_B" href="#" style="text-decoration:none">
+                  <h4 id="Question_Option_B_Text">
+                    B Şıkkına ait cevap, blabla bla bla bla bla lorem ipsum filan.
+                  <h4>
+
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                  </div>
+                </a>
+              </div>
+                <div class="col-sm-2">
+                    <button id="Option_B_Revert" type="button" class="btn btn-warning"><span><i class="fa fa-reply" aria-hidden="true"></i></span>  Geri Al</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="well well-sm" >
+              <div class="container">
+                <div class="col-sm-10">
+                  <a id="Answer_C" href="#" style="text-decoration:none">
+                    <h4 id="Question_Option_C_Text">
+                      C Şıkkına ait cevap, blabla bla bla bla bla lorem ipsum filan.
+                    <h4>
+
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                  <div class="col-sm-2">
+                      <button id="Option_C_Revert" type="button" class="btn btn-warning"><span><i class="fa fa-reply" aria-hidden="true"></i></span>  Geri Al</button>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="well well-sm" >
+                <div class="container">
+                  <div class="col-sm-10">
+                    <a id="Answer_D" href="#" style="text-decoration:none">
+                      <h4 id="Question_Option_D_Text">
+                        D Şıkkına ait cevap, blabla bla bla bla bla lorem ipsum filan.
+                      <h4>
+
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                    <div class="col-sm-2" style="height">
+                        <button id="Option_D_Revert" type="button" class="btn btn-warning"><span><i class="fa fa-reply" aria-hidden="true"></i></span>  Geri Al</button>
+                    </div>
+                  </div>
+                </div>
+
+        <!--question options end-->
+      </div>
+      <div class="panel-footer">
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"
+          aria-valuemin="0" aria-valuemax="100" style="width:70%">
+            <span class="sr-only">70% Complete</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <section id="TotalProgressInSurvey">
+
+    </section>
+
+</div>
+
+</body>
+</html>
